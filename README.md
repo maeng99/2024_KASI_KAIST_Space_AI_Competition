@@ -48,14 +48,13 @@
 - F1 Score
     - IoU 0.5
 <br />
-<br />
 
 ## 5. Key Strategy
 ### 5.1 Pipeline Construction
 ### 5.2 Augmentation
 ### 5.3 Epoch
 <br />
-<br />
+
 
 ## 6. Final Code
 ### 6.1 Classify Datasets by Solar Event
@@ -359,3 +358,5 @@ df_train_NaN['class'] = predictions_NaN
 ```python
 df_train = pd.concat([df_train_noneNaN,df_train_NaN]).sort_index()
 ```
+
+### 6.2 Training Models for Each Solar Event
