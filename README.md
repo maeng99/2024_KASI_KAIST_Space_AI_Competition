@@ -7,7 +7,7 @@
     - 한국천문연구원 · 카이스트 SW교육센터 주관
     - "천문연, 천문우주AI 경진대회···1위 상명대, 2위 KAIST" (https://www.hellodd.com/news/articleView.html?idxno=105351)
 <div align="center">
-    <img src="https://github.com/user-attachments/assets/65a385d0-9506-4600-8bb8-4888585ee6a0" width="300px"/>
+    <img src="https://github.com/user-attachments/assets/65a385d0-9506-4600-8bb8-4888585ee6a0" width="280px"/>
     <img src="https://github.com/user-attachments/assets/d1f2755a-4308-4f83-9d80-d93f19f179e4" width="600px"/>
 </div>
 <br/>
