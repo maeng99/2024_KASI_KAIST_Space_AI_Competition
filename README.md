@@ -49,7 +49,7 @@
     - IoU 0.5
 <br />
 
-## 5. Key Strategy
+## 5. Key Points
 ### 5.1 Pipeline Construction
 ### 5.2 Augmentation
 ### 5.3 Epoch
@@ -360,3 +360,10 @@ df_train = pd.concat([df_train_noneNaN,df_train_NaN]).sort_index()
 ```
 
 ### 6.2 Training Models for Each Solar Event
+#### 6.2.1 Coronal Hole: Split Data
+- train data:valid data = 8:2 로 분리
+```python
+df_train_coronalHole_set = df_train_coronalHole.sample(frac=0.8, random_state=0)
+df_valid_coronalHole_set = df_train_coronalHole.drop(df_train_coronalHole_set.index)
+```
+#### 6.2.2 Coronal Hole: Data Preprocessing
