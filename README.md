@@ -358,7 +358,7 @@ df_train_NaN['class'] = predictions_NaN
 ```python
 df_train = pd.concat([df_train_noneNaN,df_train_NaN]).sort_index()
 ```
-
+---
 ### 6.2 Training Models for Each Solar Event
 #### 6.2.1 Coronal Hole: Split Data
 - train data:valid data = 8:2
@@ -367,7 +367,7 @@ df_train_coronalHole_set = df_train_coronalHole.sample(frac=0.8, random_state=0)
 df_valid_coronalHole_set = df_train_coronalHole.drop(df_train_coronalHole_set.index)
 ```
 #### 6.2.2 Coronal Hole: Data Preprocessing
-- resize image and copy
+- resize the image and copy it to each folder
 ```python
 for i, row in tqdm(df_train_coronalHole_set.iterrows(), total=len(df_train_coronalHole_set)):
     image = Image.open(row["image_path"])
