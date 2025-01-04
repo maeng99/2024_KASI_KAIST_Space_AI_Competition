@@ -56,8 +56,16 @@
 
 ## 5. Key Points
 ### 5.1 Pipeline Construction
-### 5.2 Augmentation
-- 여러 방식의 증강 기법 시도img src="https://github.com/user-attachments/assets/5ab779b6-ab38-474e-92a4-e481ea11f639" width="100%"/>
+- 대회를 성공적으로 이끌었던 주요인
+### 5.2 YOLO models
+- detection을 수행하는 과정에서 YOLOv5n Model부터 YOLOv10s Model에 이르기까지 다양한 Model로 과제를 수행
+- 의외로 YOLOv5s Model의 가장 높은 달성률을 보임<br /> -> 아마 데이터가 엄청 방대하지 않고, 복잡한 형태가 아니기 때문이라고 생각...
+### 5.3 Augmentation
+- 여러 방식의 증강 기법 시도
+- 각 태양 이벤트 별 이미지 형태가 비슷하다는 점과 태양 이벤트가 극점에서 주로 발생한다는 점을 고려하여, 상하 또는 좌우 Flip 기법을 채택하여 다양하게 적용
+### 5.4 Image Size / Batch / Epoch
+- HyperParameter에 다양한 변화를 주면서 휴리스틱적으로 최적의 값을 결정
+- Image Size=1024 / Batch=64 / Epoch=70
 <br />
 <br />
 
