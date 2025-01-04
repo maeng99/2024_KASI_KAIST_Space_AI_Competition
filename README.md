@@ -425,11 +425,8 @@ with open(YAML_PATH, "w") as f:
                  Class     Images  Instances          P          R      mAP50   
                    all       5920      12660      0.854      0.852      0.915        0.6
 
-      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
-       4/69      29.2G    0.03222    0.02142          0        187       1024: 1
-                 Class     Images  Instances          P          R      mAP50   
-                   all       5920      12660      0.845       0.83      0.909        0.6
     ...
+
       Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
       66/69      32.7G     0.0193    0.01447          0        191       1024: 1
                  Class     Images  Instances          P          R      mAP50   
