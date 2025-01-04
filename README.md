@@ -47,6 +47,11 @@
 ### 4.1 Evaluation Formula
 - F1 Score
     - IoU 0.5
+- Public 평가 데이터와 Private 평가 데이터 50:50으로 최종 채점
+### 4.2 Fianl Results of The Evaluation
+- Public: 0.884474 / Private: 0.884492 / Total: 0.884483
+<img src="https://github.com/user-attachments/assets/5d4c00a3-3823-4fd2-9950-22746d0f3990" width="800px"/>
+<br />
 <br />
 
 ## 5. Key Points
