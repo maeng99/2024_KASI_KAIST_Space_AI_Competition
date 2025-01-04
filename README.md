@@ -58,7 +58,7 @@
 
 ## 6. Final Code
 ### 6.1 Classify Datasets by Solar Event
-#### 6.1.1 Library Declaration
+#### 6.1.1 Declare Library
 ```python
 import json
 import os
@@ -86,7 +86,7 @@ IMAGE_SIZE = 1024
 BATCH = 64
 EPOCH = 70
 ```
-#### 6.1.3 Load Training Data
+#### 6.1.3 Load Train Data
 ```python
 train_data = []
 
@@ -186,7 +186,7 @@ for i, row in tqdm(df_train.iterrows(), total=len(df_train)):
         df_train = pd.concat([df_train, new_row], ignore_index=True)
 ```
 #### 6.1.5 Define "class" Column
-- "labels' column의 'class_id'를 이용하여 "class" column 정의
+- Define "class" column using 'class_id' of "labels" column
 ```python
 df_train['class'] = df_train['labels'].apply(lambda x: [item['class_id'] for item in x] if x else [])
 df_train['class'] = df_train['class'].apply(lambda x: int(x[0]) if x else None)
@@ -202,8 +202,8 @@ class
 Name: count, dtype: int6
 ```
 #### 6.1.6 Create "df_train_NaN" and "df_train_noneNaN" DataFrame
-- label이 존재하지 않는 이미지의 정보를 모아 "df_train_NaN" 생성
-- label이 존재하는 이미지의 정보를 모아 "df_train_noneNaN" 생성
+- Create Image Information without Label as "df_train_NaN" DataFrame
+- Create Image Information with Label as "df_train_noneNaN" DataFrame
 ```python
 df_train_noneNaN = df_train[df_train['class'] != -1]
 df_train_NaN = df_train[df_train['class'] == -1]
@@ -318,7 +318,7 @@ validate_model(model, valid_loader, criterion)
 torch.save(model.state_dict(), 'simple_cnn.pth')
 ```
 #### 6.1.8 Classify "df_train_NaN" datasets
-- class가 없는 이미지 데이터를 CNN 모델을 사용하여 분류
+- Classify Image Data without Class Using CNN Model
 ```python
 # 테스트 데이터셋 클래스 정의
 class NaNDataset(Dataset):
@@ -360,6 +360,11 @@ df_train = pd.concat([df_train_noneNaN,df_train_NaN]).sort_index()
 ```
 ---
 ### 6.2 Training Models for Each Solar Event
+#### 6.2.0 Clone YOLOv5 Model
+```python
+!git clone https://github.com/ultralytics/yolov5.git 
+!pip install --quiet -r yolov5/requirements.txt
+```
 #### 6.2.1 Coronal Hole: Split Data
 - train data:valid data = 8:2
 ```python
@@ -378,4 +383,200 @@ for i, row in tqdm(df_valid_coronalHole_set.iterrows(), total=len(df_valid_coron
     image = Image.open(row["image_path"])
     image.resize((IMAGE_SIZE, IMAGE_SIZE)).save(f"{new_valid_coronalHole_path}/{IMAGE_DIR}/{row['id']}.jpg")
     shutil.copy(row["label_path"], f"{new_valid_coronalHole_path}/{LABELS_DIR}/{row['id']}.txt")
+```
+#### 6.2.3 Coronal Hole: Train Model
+```python
+dataset = {
+    "path": os.path.abspath("."),
+    "train": "train_coronalHole",
+    "val": "valid_coronalHole",
+    "nc": 1,
+    "names": ["coronal_hole"],
+}
+
+YAML_PATH = os.path.abspath("coronalHole.yaml")
+RESULT_PATH = os.path.abspath("result6_coronalHole")
+os.makedirs(RESULT_PATH, exist_ok=True)
+
+with open(YAML_PATH, "w") as f:
+    yaml.dump(dataset, f)
+```
+```python
+!PYTHONWARNINGS="ignore::FutureWarning" python yolov5/train.py --img {IMAGE_SIZE} --batch {BATCH} --epoch {EPOCH} --data {YAML_PATH} --cfg yolov5s.yaml --exist-ok --weights "" --name coronalHole --project {RESULT_PATH}
+```
+```
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+       0/69      32.8G    0.07525    0.04406          0        217       1024: 1
+                 Class     Images  Instances          P          R      mAP50   
+                   all       5920      12660      0.122      0.138      0.048     0.0104
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+       1/69      29.2G    0.05207    0.03072          0        199       1024: 1
+                 Class     Images  Instances          P          R      mAP50   
+                   all       5920      12660      0.664      0.707      0.696      0.338
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+       2/69      29.2G    0.04162    0.02532          0        175       1024: 1
+                 Class     Images  Instances          P          R      mAP50   
+                   all       5920      12660      0.605      0.519      0.525      0.173
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+       3/69      29.2G    0.03505    0.02265          0        184       1024: 1
+                 Class     Images  Instances          P          R      mAP50   
+                   all       5920      12660      0.854      0.852      0.915        0.6
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+       4/69      29.2G    0.03222    0.02142          0        187       1024: 1
+                 Class     Images  Instances          P          R      mAP50   
+                   all       5920      12660      0.845       0.83      0.909        0.6
+    ...
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      66/69      32.7G     0.0193    0.01447          0        191       1024: 1
+                 Class     Images  Instances          P          R      mAP50   
+                   all       5920      12660      0.963      0.974      0.991      0.829
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      67/69      32.7G    0.01916    0.01411          0        169       1024: 1
+                 Class     Images  Instances          P          R      mAP50   
+                   all       5920      12660      0.963      0.975      0.991       0.83
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      68/69      32.7G    0.01904    0.01414          0        190       1024: 1
+                 Class     Images  Instances          P          R      mAP50   
+                   all       5920      12660      0.963      0.975      0.991      0.831
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+      69/69      32.7G    0.01891    0.01406          0        223       1024: 1
+                 Class     Images  Instances          P          R      mAP50   
+                   all       5920      12660      0.964      0.975      0.991      0.832
+
+YOLOv5s summary: 157 layers, 7012822 parameters, 0 gradients, 15.8 GFLOPs
+                 Class     Images  Instances          P          R      mAP50   
+                   all       5920      12660      0.964      0.975      0.991      0.832
+```
+#### 6.2.4 Coronal Hole: Validate Model
+```python
+!python yolov5/detect.py --source {os.path.join(new_valid_coronalHole_path, IMAGE_DIR)} --weights {RESULT_PATH}/coronalHole/weights/best.pt --conf 0.5 --save-txt --save-conf --exist-ok --project {RESULT_PATH}/valid
+```
+- Visualize predictions (r: predictions, w: labels)
+<img src="https://github.com/user-attachments/assets/bb930e43-f898-4483-968b-a52d0dcc59b2" width="400px"/>
+
+#### 6.2.5 Repeat This Training Process Equally for Sunspots and Prominence
+...
+<br />
+<img src="https://github.com/user-attachments/assets/ed9a124a-91d7-453e-ab29-d6c5d8265140" width="400px"/>
+
+---
+### 6.3 Inference
+#### 6.3.1 Load Test Data
+```python
+test_data = []
+
+for image in tqdm(os.listdir(os.path.join(DATASET_ROOT, TEST_DIR, IMAGE_DIR))):
+    image_id = image.split(".")[0]
+    image_path = os.path.join(DATASET_ROOT, TEST_DIR, IMAGE_DIR, image)
+
+    # 테스트 데이터는 라벨 파일이 없습니다.
+    test_data.append({"id": image_id, "image_path": image_path, "label_path": "", "labels": []})
+
+df_test = pd.DataFrame(test_data)
+```
+#### 6.3.2 Classify Test Data
+- Classify to use the CNN model trained earlier
+```python
+# 테스트 데이터셋 클래스 정의
+class TestDataset(Dataset):
+    def __init__(self, df, transform=None):
+        self.df = df
+        self.transform = transform
+
+    def __len__(self):
+        return len(self.df)
+
+    def __getitem__(self, idx):
+        img_path = self.df.iloc[idx]['image_path']
+        image = Image.open(img_path).convert('RGB')
+
+        if self.transform:
+            image = self.transform(image)
+
+        return image
+
+# 테스트 데이터셋 및 데이터 로더 생성
+test_dataset = TestDataset(df_test, transform=transform)
+test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
+
+# 예측 결과 저장
+predictions_test = []
+
+with torch.no_grad():
+    for images in test_loader:
+        outputs = model(images)
+        _, predicted = torch.max(outputs.data, 1)
+        predictions_test.extend(predicted.cpu().numpy())
+
+# df_test에 예측 결과 추가
+df_test['class'] = predictions_test
+```
+```python
+df_test_coronalHole = df_test[df_test['class'] == 0]
+df_test_sunspot = df_test[df_test['class'] == 1]
+df_test_prominence = df_test[df_test['class'] == 2]
+```
+#### 6.3.3 Infer for Each Solar Event
+- preprocessing
+```python
+for i, row in tqdm(df_test_coronalHole.iterrows(), total=len(df_test_coronalHole)):
+    image = Image.open(row["image_path"])
+    image.resize((IMAGE_SIZE, IMAGE_SIZE)).save(f"{new_test_coronalHole_path}/{IMAGE_DIR}/{row['id']}.jpg")
+```
+- test
+```python
+!python yolov5/detect.py --source {os.path.join(new_test_coronalHole_path, IMAGE_DIR)} --weights result6_coronalHole/coronalHole/weights/best.pt --conf 0.5 --save-txt --save-conf --exist-ok --project result6_coronalHole/test
+```
+- create label
+```python
+for i, row in tqdm(df_test_coronalHole.iterrows(), total=len(df_test_coronalHole)):
+    label_path = os.path.join("result6_coronalHole", "test", "exp", "labels", row["id"] + ".txt")
+
+    labels = []
+    if os.path.exists(label_path):
+        with open(label_path, "r") as f:
+            lines = f.readlines()
+
+        for line in lines:
+            class_id, c_x, c_y, w, h, conf = map(float, line.split())
+            labels.append({"class_id": int(class_id), "conf": conf, "x": c_x, "y": c_y, "w": w, "h": h})
+
+    df_test_coronalHole.at[i, "labels"] = labels
+df_test_coronalHole
+```
+<img src="https://github.com/user-attachments/assets/6ef74853-c749-4707-a4e7-dd1c64527b0b" width="400px"/>
+
+- Repeat This Inference Process Equally for Sunspots and Prominence<br />...
+#### 6.3.4 Combine Test Data
+```python
+df_test = pd.concat([df_test_coronalHole,df_test_sunspot,df_test_prominence]).sort_index()
+df_test = df_test.drop('class', axis=1)
+df_test.head()
+```
+#### 6.3.5 Create Submission File
+```python
+submission = []
+
+for i, row in tqdm(df_test.iterrows(), total=len(df_test)):
+    image_id = row["id"]
+    labels = []
+    for label in row["labels"]:
+        class_id = label["class_id"]
+        x = label["x"]
+        y = label["y"]
+        w = label["w"]
+        h = label["h"]
+
+        labels.append({"class_id": class_id, "x": x, "y": y, "w": w, "h": h})
+    submission.append({"id": image_id, "labels": labels})
+
+df_submission = pd.DataFrame(submission)
+df_submission.to_csv("submission.csv", index=False)
 ```
