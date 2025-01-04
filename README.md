@@ -57,7 +57,72 @@
 ## 5. Key Points
 ### 5.1 Pipeline Construction
 ### 5.2 Augmentation
-### 5.3 Epoch
+- 여러 방식의 증강 기법 시도img src="https://github.com/user-attachments/assets/5ab779b6-ab38-474e-92a4-e481ea11f639" width="100%"/>
+<br />
+<br />
+
+# ☀️[Total 1st 태양상 수상] 2024 제1회 한국천문연구원-카이스트 천문우주 AI 경진대회 (우쭈쭈팀)☀️
+- "2024 제1회 한국천문연구원-카이스트 천문우주 AI 경진대회" 태양상 수상 🏆
+    - 한국천문연구원 · 카이스트 SW교육센터 주관
+    - "천문연, 천문우주AI 경진대회···1위 상명대, 2위 KAIST" (https://www.hellodd.com/news/articleView.html?idxno=105351)
+<div align="center">
+    <img src="https://github.com/user-attachments/assets/65a385d0-9506-4600-8bb8-4888585ee6a0" width="250px"/>
+    <img src="https://github.com/user-attachments/assets/d1f2755a-4308-4f83-9d80-d93f19f179e4" width="500px"/>
+</div>
+<br/>
+
+## 1. Contest Overview
+- **대회 주제: AI기반 지구 영향 태양 이벤트 자동화 탐지**
+    * 태양 코로나홀(coronal hole), 흑점(sunspot), 홍염(prominence) 탐지
+<div align="center">
+    <img src="https://github.com/user-attachments/assets/b84f0583-4dd0-41fe-9cfe-2683a62a7a23" width="250px"/>
+    <img src="https://github.com/user-attachments/assets/13f6be21-0fc6-457d-b399-cbdb8ebe7e5b" width="250px"/>
+    <img src="https://github.com/user-attachments/assets/76dccb55-1627-49ee-91ff-55b4101590d4" width="250px"/>
+</div>
+<br/>
+
+## 2. Team Members
+**Team: 우쭈쭈팀**
+| 맹의현 | 신은빈 | 이창민 |
+|:------:|:------:|:------:|
+| [GitHub](https://github.com/maeng99) | [GitHub](https://github.com/) | [GitHub](https://github.com/) |
+<br/>
+
+## 3. Preliminary
+- 천문 · AI 퀴즈 + 천문 데이터 레이블링 스코어
+    - 레이블링 예시
+<div align="center">
+    <img src="https://github.com/user-attachments/assets/ff510567-573d-4f64-a88b-8f09b31a3775" width="250px"/>
+    <img src="https://github.com/user-attachments/assets/ce63619f-2266-42ce-aeea-1fccb010959c" width="250px"/>
+    <img src="https://github.com/user-attachments/assets/f918a4b2-3603-4646-b47c-05a9337de79c" width="250px"/>
+</div>
+<br />
+
+## 4. Finals
+- 인공지능 모델을 이용하여 태양 이미지의 레이블을 판별하고 위치를 탐지
+    - 흑점, 코로나 홀, 홍염 3가지 유형의 이미지 제공
+    - 각 이미지에는 각 탐지 대상에 대한 라벨링만 된 상태
+- elice 플랫폼( https://kaist-kasiai.elice.io/explore )을 활용해 과제 수행
+### 4.1 Evaluation Formula
+- F1 Score
+    - IoU 0.5
+- Public 평가 데이터와 Private 평가 데이터 50:50으로 최종 채점
+### 4.2 Fianl Results of The Evaluation
+- Public: 0.884474 / Private: 0.884492 / Total: 0.884483
+<img src="https://github.com/user-attachments/assets/5d4c00a3-3823-4fd2-9950-22746d0f3990" width="800px"/>
+<br />
+<br />
+
+## 5. Key Points
+### 5.1 Pipeline Construction
+- 대회를 성공적으로 이끌었던 주요인으로 생각
+### 5.2 YOLO Model
+### 5.3 Augmentation
+- 여러 방식의 증강 기법 시도
+- 각 태양 이벤트 별 이미지의 형태가 비슷하다는 점과 태양 이벤트가 극점에서 주로 발생한다는 점을 고려하였을 때,<br /> 상하 또는 좌우 Flip 기법을 채택하여 다양하게 적용
+### 5.4 Epoch
+- 30 epochs부터 150 epochs까지 다양한 epoch을 실험 적용하였으나, epoch이 70일 때 가장 높은 mAP를 달성
+
 <br />
 
 
