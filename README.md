@@ -13,7 +13,7 @@
 <br/>
 
 ## 1. Contest Overview
-- **대회 주제: AI기반 지구 영향 태양 이벤트 자동화 탐지**
+- 대회 주제: **"AI기반 지구 영향 태양 이벤트 자동화 탐지"**
     * 태양 코로나홀(coronal hole), 흑점(sunspot), 홍염(prominence) 탐지
 <div align="center">
     <img src="https://github.com/user-attachments/assets/b84f0583-4dd0-41fe-9cfe-2683a62a7a23" width="250px"/>
@@ -23,7 +23,7 @@
 <br/>
 
 ## 2. Team Members
-**Team: 우쭈쭈팀**
+Team: **"우쭈쭈팀"**
 | 맹의현 | 신은빈 | 이창민 |
 |:------:|:------:|:------:|
 | [GitHub](https://github.com/maeng99) | [GitHub](https://github.com/) | [GitHub](https://github.com/) |
