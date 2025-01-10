@@ -20,6 +20,8 @@
     <img src="https://github.com/user-attachments/assets/13f6be21-0fc6-457d-b399-cbdb8ebe7e5b" width="250px"/>
     <img src="https://github.com/user-attachments/assets/76dccb55-1627-49ee-91ff-55b4101590d4" width="250px"/>
 </div>
+
+- 대회 기간: 2024.07. ~2024.08. (1개월)
 <br/>
 
 ## 2. Team Members
