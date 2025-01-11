@@ -21,7 +21,7 @@
     <img src="https://github.com/user-attachments/assets/76dccb55-1627-49ee-91ff-55b4101590d4" width="250px"/>
 </div>
 
-- 대회 기간: 2024.07. ~2024.08. (1개월)
+- 대회 기간: 2024.07. ~ 2024.08. (1개월)
 <br/>
 
 ## 2. Team Members
@@ -59,7 +59,7 @@ Team: **"우쭈쭈팀"**
 ## 5. Key Points
 ### 5.1 Pipeline Construction
 - 대회를 성공적으로 이끌었던 주요인
-### 5.2 YOLO models
+### 5.2 YOLO Models
 - detection을 수행하는 과정에서 YOLOv5n부터 YOLOv10s에 이르기까지 다양한 model로 과제를 수행
 - 의외로 YOLOv5s model이 가장 높은 달성률을 보임<br /> -> 아마 데이터가 엄청 방대하지 않고, 복잡한 형태가 아니기 때문이라고 생각...
 ### 5.3 Augmentation
@@ -217,8 +217,8 @@ class
 Name: count, dtype: int6
 ```
 #### 6.1.6 Create "df_train_NaN" and "df_train_noneNaN" DataFrame
-- Create Image Information without Label as "df_train_NaN" DataFrame
-- Create Image Information with Label as "df_train_noneNaN" DataFrame
+- Create image information without label as "df_train_NaN" dataFrame
+- Create image information with label as "df_train_noneNaN" dataFrame
 ```python
 df_train_noneNaN = df_train[df_train['class'] != -1]
 df_train_NaN = df_train[df_train['class'] == -1]
@@ -332,8 +332,8 @@ validate_model(model, valid_loader, criterion)
 # 모델 저장
 torch.save(model.state_dict(), 'simple_cnn.pth')
 ```
-#### 6.1.8 Classify "df_train_NaN" datasets
-- Classify Image Data without Class Using CNN Model
+#### 6.1.8 Classify "df_train_NaN" Datasets
+- Classify image data without class using CNN model
 ```python
 # 테스트 데이터셋 클래스 정의
 class NaNDataset(Dataset):
@@ -387,7 +387,7 @@ df_train_coronalHole_set = df_train_coronalHole.sample(frac=0.8, random_state=0)
 df_valid_coronalHole_set = df_train_coronalHole.drop(df_train_coronalHole_set.index)
 ```
 #### 6.2.2 Coronal Hole: Data Preprocessing
-- resize the image and copy it to each folder
+- Resize the image and copy it to each folder
 ```python
 for i, row in tqdm(df_train_coronalHole_set.iterrows(), total=len(df_train_coronalHole_set)):
     image = Image.open(row["image_path"])
@@ -536,17 +536,17 @@ df_test_sunspot = df_test[df_test['class'] == 1]
 df_test_prominence = df_test[df_test['class'] == 2]
 ```
 #### 6.3.3 Infer for Each Solar Event
-- preprocessing
+- Preprocessing
 ```python
 for i, row in tqdm(df_test_coronalHole.iterrows(), total=len(df_test_coronalHole)):
     image = Image.open(row["image_path"])
     image.resize((IMAGE_SIZE, IMAGE_SIZE)).save(f"{new_test_coronalHole_path}/{IMAGE_DIR}/{row['id']}.jpg")
 ```
-- test
+- Test
 ```python
 !python yolov5/detect.py --source {os.path.join(new_test_coronalHole_path, IMAGE_DIR)} --weights result6_coronalHole/coronalHole/weights/best.pt --conf 0.5 --save-txt --save-conf --exist-ok --project result6_coronalHole/test
 ```
-- create label
+- Create label
 ```python
 for i, row in tqdm(df_test_coronalHole.iterrows(), total=len(df_test_coronalHole)):
     label_path = os.path.join("result6_coronalHole", "test", "exp", "labels", row["id"] + ".txt")
