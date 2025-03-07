@@ -58,17 +58,18 @@ Team: **"우쭈쭈팀"**
 
 ## 5. Key Points
 ### 5.1 Pipeline Construction
+- 대회를 성공적으로 이끌었던 주요인
 
 #### [ Overview ]
 ![Pipeline Overview](pipeline_images/Pipeline_overview.png)
 
-##### [ Stage 1 ]
+#### [ Stage 1 ]
 ![Pipeline Stage1](pipeline_images/Stage_1.png)
 
 #### [ Stage 2 ]
 ![Pipeline Stage2](pipeline_images/Stage_2.png)
 
-- 대회를 성공적으로 이끌었던 주요인
+
 ### 5.2 YOLO Models
 - detection을 수행하는 과정에서 YOLOv5n부터 YOLOv10s에 이르기까지 다양한 model로 과제를 수행
 - 의외로 YOLOv5s model이 가장 높은 달성률을 보임<br /> -> 아마 데이터가 엄청 방대하지 않고, 복잡한 형태가 아니기 때문이라고 생각...
@@ -82,7 +83,8 @@ Team: **"우쭈쭈팀"**
 <br />
 
 ## 6. Final Code
-### 6.1 Classify Datasets by Solar Event
+### 6.1 Classify Datasets by Solar Event [ Stage 1 ]
+![Pipeline Stage1](pipeline_images/Stage_1.png)
 #### 6.1.1 Declare Library
 ```python
 import json
@@ -384,7 +386,9 @@ df_train_NaN['class'] = predictions_NaN
 df_train = pd.concat([df_train_noneNaN,df_train_NaN]).sort_index()
 ```
 ---
-### 6.2 Training Models for Each Solar Event
+### 6.2 Training Models for Each Solar Event [ Stage 2 ]
+![Pipeline Stage2](pipeline_images/Stage_2.png)
+
 #### 6.2.0 Clone YOLOv5 Model
 ```python
 !git clone https://github.com/ultralytics/yolov5.git 
