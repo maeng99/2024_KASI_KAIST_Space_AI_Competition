@@ -59,21 +59,14 @@ Team: **"우쭈쭈팀"**
 ## 5. Key Points
 ### 5.1 Pipeline Construction
 
-<p align="center">
-
+#### [ Overview ]
 ![Pipeline Overview](pipeline_images/Pipeline_overview.png)
-[ Overview ]
-</p>
 
+##### [ Stage 1 ]
 ![Pipeline Stage1](pipeline_images/Stage_1.png)
-<p align="center">
-[ Stage 1 ]
-</p>
 
+#### [ Stage 2 ]
 ![Pipeline Stage2](pipeline_images/Stage_2.png)
-<p align="center">
-[ Stage 2 ]
-</p>
 
 - 대회를 성공적으로 이끌었던 주요인
 ### 5.2 YOLO Models
