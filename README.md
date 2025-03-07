@@ -62,10 +62,12 @@ Team: **"우쭈쭈팀"**
 <p align="center">
 [ Overview ]
 </p>
+
 ![Pipeline Stage1](pipeline_images/Stage_1.png)
 <p align="center">
 [ Stage 1 ]
 </p>
+
 ![Pipeline Stage2](pipeline_images/Stage_2.png)
 <p align="center">
 [ Stage 2 ]
