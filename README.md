@@ -58,6 +58,9 @@ Team: **"우쭈쭈팀"**
 
 ## 5. Key Points
 ### 5.1 Pipeline Construction
+![Pipeline Overview](pipeline_images/Pipeline_overview.png)
+![Pipeline Stage1](pipeline_images/Stage_1.png)
+![Pipeline Stage2](pipeline_images/Stage_2.png)
 - 대회를 성공적으로 이끌었던 주요인
 ### 5.2 YOLO Models
 - detection을 수행하는 과정에서 YOLOv5n부터 YOLOv10s에 이르기까지 다양한 model로 과제를 수행
@@ -66,7 +69,7 @@ Team: **"우쭈쭈팀"**
 - 여러 방식의 증강 기법 시도
 - 각 태양 이벤트 별 이미지 형태가 비슷하다는 점과 태양 이벤트가 극점에서 주로 발생한다는 점을 고려하여,<br />상하 또는 좌우 Flip 기법을 채택하여 다양하게 적용
 ### 5.4 Image Size / Batch / Epoch
-- HyperParameter에 다양한 변화를 주면서 휴리스틱적으로 최적의 값을 결정
+- 실험은 통한 최적의 HyperParameter 결정
 - Image Size=1024 / Batch=64 / Epoch=70
 <br />
 <br />
