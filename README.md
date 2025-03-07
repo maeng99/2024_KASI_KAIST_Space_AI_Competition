@@ -58,8 +58,10 @@ Team: **"우쭈쭈팀"**
 
 ## 5. Key Points
 ### 5.1 Pipeline Construction
+
+<p align="center">
+
 ![Pipeline Overview](pipeline_images/Pipeline_overview.png)
-#### <p align="center">
 [ Overview ]
 </p>
 
