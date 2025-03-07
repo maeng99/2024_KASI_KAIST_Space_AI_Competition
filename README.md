@@ -28,7 +28,7 @@
 Team: **"우쭈쭈팀"**
 | 맹의현 | 신은빈 | 이창민 |
 |:------:|:------:|:------:|
-| [GitHub](https://github.com/maeng99) | [GitHub](https://github.com/) | [GitHub](https://github.com/) |
+| [GitHub](https://github.com/maeng99) | [GitHub](https://github.com/) | [GitHub](https://github.com/LeeChangmin0310) |
 <br/>
 
 ## 3. Preliminary
