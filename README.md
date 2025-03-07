@@ -59,7 +59,7 @@ Team: **"우쭈쭈팀"**
 ## 5. Key Points
 ### 5.1 Pipeline Construction
 ![Pipeline Overview](pipeline_images/Pipeline_overview.png)
-<p align="center">
+#### <p align="center">
 [ Overview ]
 </p>
 
@@ -72,6 +72,7 @@ Team: **"우쭈쭈팀"**
 <p align="center">
 [ Stage 2 ]
 </p>
+
 - 대회를 성공적으로 이끌었던 주요인
 ### 5.2 YOLO Models
 - detection을 수행하는 과정에서 YOLOv5n부터 YOLOv10s에 이르기까지 다양한 model로 과제를 수행
