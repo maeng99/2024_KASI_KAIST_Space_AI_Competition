@@ -28,7 +28,7 @@
 Team: **"우쭈쭈팀"**
 | 맹의현 | 신은빈 | 이창민 |
 |:------:|:------:|:------:|
-| [GitHub](https://github.com/maeng99) | [GitHub](https://github.com/) | [GitHub](https://github.com/) |
+| [GitHub](https://github.com/maeng99) | [GitHub](https://github.com/) | [GitHub](https://github.com/LeeChangmin0310) |
 <br/>
 
 ## 3. Preliminary
@@ -59,6 +59,17 @@ Team: **"우쭈쭈팀"**
 ## 5. Key Points
 ### 5.1 Pipeline Construction
 - 대회를 성공적으로 이끌었던 주요인
+
+#### [ Overview ]
+<img src="pipeline_images/Pipeline_overview.png" alt="Pipeline Overview" width="600px"/>
+
+#### [ Stage 1 ]
+<img src="pipeline_images/Stage_1.png" alt="Pipeline Stage1" width="600px"/>
+
+#### [ Stage 2 ]
+<img src="pipeline_images/Stage_2.png" alt="Pipeline Stage2" width="600px"/>
+
+
 ### 5.2 YOLO Models
 - detection을 수행하는 과정에서 YOLOv5n부터 YOLOv10s에 이르기까지 다양한 model로 과제를 수행
 - 의외로 YOLOv5s model이 가장 높은 달성률을 보임<br /> -> 아마 데이터가 엄청 방대하지 않고, 복잡한 형태가 아니기 때문이라고 생각...
@@ -66,13 +77,15 @@ Team: **"우쭈쭈팀"**
 - 여러 방식의 증강 기법 시도
 - 각 태양 이벤트 별 이미지 형태가 비슷하다는 점과 태양 이벤트가 극점에서 주로 발생한다는 점을 고려하여,<br />상하 또는 좌우 Flip 기법을 채택하여 다양하게 적용
 ### 5.4 Image Size / Batch / Epoch
-- HyperParameter에 다양한 변화를 주면서 휴리스틱적으로 최적의 값을 결정
+- 실험은 통한 최적의 HyperParameter 결정
 - Image Size=1024 / Batch=64 / Epoch=70
 <br />
 <br />
 
 ## 6. Final Code
-### 6.1 Classify Datasets by Solar Event
+### 6.1 [ Stage 1 ] Classify Datasets by Solar Event
+<img src="pipeline_images/Stage_1.png" alt="Pipeline Stage1" width="600px"/>
+
 #### 6.1.1 Declare Library
 ```python
 import json
@@ -374,7 +387,9 @@ df_train_NaN['class'] = predictions_NaN
 df_train = pd.concat([df_train_noneNaN,df_train_NaN]).sort_index()
 ```
 ---
-### 6.2 Training Models for Each Solar Event
+### 6.2 [ Stage 2 ] Training Models for Each Solar Event
+<img src="pipeline_images/Stage_2.png" alt="Pipeline Stage2" width="600px"/>
+
 #### 6.2.0 Clone YOLOv5 Model
 ```python
 !git clone https://github.com/ultralytics/yolov5.git 
