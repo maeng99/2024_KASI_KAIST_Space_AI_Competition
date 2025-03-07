@@ -61,13 +61,13 @@ Team: **"우쭈쭈팀"**
 - 대회를 성공적으로 이끌었던 주요인
 
 #### [ Overview ]
-![Pipeline Overview](pipeline_images/Pipeline_overview.png)
+<img src="pipeline_images/Pipeline_overview.png" alt="Pipeline Overview" width="600px"/>
 
 #### [ Stage 1 ]
-![Pipeline Stage1](pipeline_images/Stage_1.png)
+<img src="pipeline_images/Stage_1.png" alt="Pipeline Stage1" width="600px"/>
 
 #### [ Stage 2 ]
-![Pipeline Stage2](pipeline_images/Stage_2.png)
+<img src="pipeline_images/Stage_2.png" alt="Pipeline Stage2" width="600px"/>
 
 
 ### 5.2 YOLO Models
@@ -84,7 +84,8 @@ Team: **"우쭈쭈팀"**
 
 ## 6. Final Code
 ### 6.1 [ Stage 1 ] Classify Datasets by Solar Event
-![Pipeline Stage1](pipeline_images/Stage_1.png)
+<img src="pipeline_images/Stage_1.png" alt="Pipeline Stage1" width="600px"/>
+
 #### 6.1.1 Declare Library
 ```python
 import json
@@ -387,7 +388,7 @@ df_train = pd.concat([df_train_noneNaN,df_train_NaN]).sort_index()
 ```
 ---
 ### 6.2 [ Stage 2 ] Training Models for Each Solar Event
-![Pipeline Stage2](pipeline_images/Stage_2.png)
+<img src="pipeline_images/Stage_2.png" alt="Pipeline Stage2" width="600px"/>
 
 #### 6.2.0 Clone YOLOv5 Model
 ```python
