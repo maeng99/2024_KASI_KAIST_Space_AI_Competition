@@ -83,7 +83,7 @@ Team: **"우쭈쭈팀"**
 <br />
 
 ## 6. Final Code
-### 6.1 Classify Datasets by Solar Event [ Stage 1 ]
+### 6.1 [ Stage 1 ] Classify Datasets by Solar Event
 ![Pipeline Stage1](pipeline_images/Stage_1.png)
 #### 6.1.1 Declare Library
 ```python
@@ -386,7 +386,7 @@ df_train_NaN['class'] = predictions_NaN
 df_train = pd.concat([df_train_noneNaN,df_train_NaN]).sort_index()
 ```
 ---
-### 6.2 Training Models for Each Solar Event [ Stage 2 ]
+### 6.2 [ Stage 2 ] Training Models for Each Solar Event
 ![Pipeline Stage2](pipeline_images/Stage_2.png)
 
 #### 6.2.0 Clone YOLOv5 Model
